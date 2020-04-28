@@ -10,10 +10,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="tareaconstruccion.BusquedaController">
+<AnchorPane id="AnchorPane" fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tareaconstruccion.BusquedaController">
    <children>
-      <Button layoutX="221.0" layoutY="97.0" mnemonicParsing="false" style="-fx-background-color: blue;" text="Buscar" textFill="WHITE">
+      <Button fx:id="buscar" layoutX="221.0" layoutY="97.0" mnemonicParsing="false" onAction="#busqueda" style="-fx-background-color: blue;" text="Buscar" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -35,7 +34,7 @@
             <Image url="@farmacia.png" />
          </image>
       </ImageView>
-      <Button layoutX="471.0" layoutY="356.0" mnemonicParsing="false" style="-fx-background-color: blue;" text="Generar PDF" textFill="WHITE">
+      <Button fx:id="generarPdf" layoutX="471.0" layoutY="356.0" mnemonicParsing="false" onAction="#generarPDF" style="-fx-background-color: blue;" text="Generar PDF" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>

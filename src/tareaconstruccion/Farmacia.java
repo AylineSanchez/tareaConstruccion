@@ -5,6 +5,8 @@
  */
 package tareaconstruccion;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Aylinee
@@ -14,9 +16,9 @@ public class Farmacia {
     public String franquicia;
     public String dirección;
     public String teléfono;
-    public Medicina medicinas[];
+    public ArrayList<Medicina> medicinas = new  ArrayList<>();
 
-    public Farmacia(String nombre, String franquicia, String dirección, String teléfono, Medicina[] medicinas) {
+    public Farmacia(String nombre, String franquicia, String dirección, String teléfono, ArrayList<Medicina> medicinas) {
         this.nombre = nombre;
         this.franquicia = franquicia;
         this.dirección = dirección;
@@ -56,14 +58,14 @@ public class Farmacia {
         this.teléfono = teléfono;
     }
 
-    public Medicina[] getMedicinas() {
+    public ArrayList<Medicina> getMedicinas() {
         return medicinas;
     }
 
-    public void setMedicinas(Medicina[] medicinas) {
+    public void setMedicinas(ArrayList<Medicina> medicinas) {
         this.medicinas = medicinas;
     }
-    
+
     
     
 }
