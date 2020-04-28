@@ -47,7 +47,9 @@ public class TareaConstruccion extends Application {
         medicinas.add(medicina1);
         medicinas.add(medicina2);
         Farmacia salco= new Farmacia("salco","sdsdads","dsdsad","sadas",medicinas);
+        Farmacia verde= new Farmacia("verde","sdsdads","dsdsad","sadas",medicinas);
         farmacias.add(salco);
+        farmacias.add(verde);
         System.out.println(""+farmacias.size());
         launch(args);
         

@@ -7,12 +7,16 @@ package tareaconstruccion;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Iterator;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -34,9 +38,15 @@ public class BusquedaController implements Initializable {
     @FXML
     private Button generarPdf;
     
+    @FXML
+    private TextField medicamento;
+    
+    @FXML
+    final ChoiceBox<String> opciones = new ChoiceBox<String>(FXCollections.observableArrayList("Precio", "Presentacion", "Region"));
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+
     }    
     @FXML 
     private void generarPDF(ActionEvent event) throws IOException{
@@ -48,12 +58,45 @@ public class BusquedaController implements Initializable {
     
     @FXML 
     private void busqueda(ActionEvent event) throws IOException{
-        System.out.println(""+TareaConstruccion.farmacias.get(0).getMedicinas().get(0).getNombre());
-        if (TareaConstruccion.farmacias.get(0).getMedicinas().get(0).getNombre().equals("Paracetamol")){
+        Iterator it = TareaConstruccion.farmacias.iterator();
+        System.out.println(""+medicamento.getText().toString());
+        String nombreMedicamento= medicamento.getText();
+        while(it.hasNext()){
+            Farmacia f= (Farmacia)it.next();
+            System.out.println("entre aqui");
+            for(int i=0;i<f.getMedicinas().size()-1;i++){
+                System.out.println("entre aca");
+                if (f.getMedicinas().get(i).getNombre().equals(nombreMedicamento)){
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Buscador de medicina");
+                    alert.setHeaderText("Se encontro en la farmacia: "+f.getNombre());
+                    alert.showAndWait();
+                }           
+            }
+        }
+    }
+    
+    @FXML 
+    private void opcionesFiltro(ActionEvent event) throws IOException{
+        if(opciones.getValue().equals("Precio")){
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Se encontro");
-            alert.setHeaderText("Buscador de medicina");
+            alert.setTitle("Filtro");
+            alert.setHeaderText("Se ordeno por precio");
+            alert.showAndWait();
+        }
+        if(opciones.getValue().equals("Presentacion")){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Filtro");
+            alert.setHeaderText("Se ordeno por presentacion");
+            alert.showAndWait();
+        }
+        if(opciones.getValue().equals("Region")){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Filtro");
+            alert.setHeaderText("Se ordeno por region");
             alert.showAndWait();
         }
     }
+    
+    
 }
